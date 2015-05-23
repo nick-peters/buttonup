@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>ButtonUp</title>
+  </head>
+  <body>
+    <h1 id='user'></h1>
+    <p><form action='http://localhost:3000/checkin'>
+        <input id='checkInButton' type='submit' value='CHECKIN BUTTON'>
+        </form>
+    </p>
+
+    <div id='time'></span>
+
+  </body>
+
+</html>
+
+<script type="text/javascript">
+var interval;
+
+$(function() {
+
+  var userEmail;
+  $.get('http://localhost:3000/timer', function(timer) {
+    userEmail = timer.user;
+    startTimer(timer.newTime, $('#time'));
+    $('#user').text(userEmail)
+  });
+
+  $('#checkInButton').click(function(event) {
+    event.preventDefault();
+    $.post('http://localhost:3000/checkin',{email: userEmail}, function(timer) {
+      $.get('http://localhost:3000/timer', function(timer) {
+        startTimer(timer.newTime, $('#time'));
+      });
+    });
+  });
+});
+
+function startTimer(duration, display) {
+  var timer = duration / 1000;
+  var minutes;
+  var seconds;
+  window.clearInterval(interval);
+
+  interval = setInterval(function () {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+   if(timer < 0) {
+      minutes = minutes <= 0 && minutes > -10 ? "-0" + (minutes.toString().slice(1)) : minutes;
+      seconds = seconds <= 0 && seconds > -10 ? "0" + (seconds.toString().slice(1)) : seconds.toString().slice(1);
+   } else {
+      minutes = minutes < 10 && minutes > 0 ? "0" + minutes : minutes;
+      seconds = seconds < 10 && seconds > 0 ? "0" + seconds : seconds;
+    }
+
+    display.text(minutes + ":" + seconds);
+
+    timer--;
+
+  }, 1000);
+}
+</script>

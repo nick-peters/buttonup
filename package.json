@@ -1,0 +1,50 @@
+{
+  "name": "checkinapp",
+  "version": "1.0.0",
+  "description": "checking in so you dont have to",
+  "main": "app.js",
+  "scripts": {
+    "test": "test grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jvald8/checkinapp.git"
+  },
+  "keywords": [
+    "check",
+    "in",
+    "app",
+    "relationship",
+    "management",
+    "mom",
+    "dad",
+    "family",
+    "group"
+  ],
+  "author": "Jon Ringvald Nick Peters",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jvald8/checkinapp/issues"
+  },
+  "homepage": "https://github.com/jvald8/checkinapp",
+  "dependencies": {
+    "body-parser": "^1.12.4",
+    "cookie-parser": "^1.3.4",
+    "express": "^4.12.4",
+    "express-session": "^1.11.2",
+    "method-override": "^2.3.3",
+    "mongoose": "^4.0.3",
+    "morgan": "^1.5.3",
+    "passport": "^0.2.1",
+    "passport-facebook": "^2.0.0"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "chai-http": "^1.0.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jscs": "^1.8.0",
+    "grunt-simple-mocha": "^0.4.0"
+  }
+}
